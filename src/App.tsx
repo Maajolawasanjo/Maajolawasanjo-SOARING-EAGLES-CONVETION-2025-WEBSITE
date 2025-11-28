@@ -4,7 +4,7 @@ import { About } from './components/About';
 import { Speakers } from './components/Speakers';
 import { Schedule } from './components/Schedule';
 import { WatchLive } from './components/WatchLive';
-import { Media } from './components/Media';
+import Media from './components/Media';
 import { Registration } from './components/Registration';
 import { Donate } from './components/Donate';
 import { Location } from './components/Location';
@@ -12,7 +12,7 @@ import { CallToAction } from './components/CallToAction';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { useEffect } from 'react';
-import faviconImage from 'figma:asset/d6138319d8ef6679be8076bb86484a7bd572cb7e.png';
+import faviconImage from 'figma:asset/b3fae9dc2ba60a8cd2341e189ad799fb6b397d8a.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

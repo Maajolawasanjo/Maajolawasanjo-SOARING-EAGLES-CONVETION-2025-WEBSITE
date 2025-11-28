@@ -1,22 +1,11 @@
-import { Users, CheckCircle } from 'lucide-react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { useState } from 'react';
+import { Users, CheckCircle, ExternalLink } from 'lucide-react';
+
+// Google Form Registration Link
+const EXTERNAL_REGISTRATION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSexsJPzLDztxSvJyXXiR93G97ZxzJI8m7x2NWRw2F-GIbbl4A/viewform?usp=publish-editor';
 
 export function Registration() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    church: ''
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleRegistrationClick = () => {
+    window.open(EXTERNAL_REGISTRATION_URL, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -39,92 +28,38 @@ export function Registration() {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          {/* Registration Form */}
-          <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl border-2 border-blue-100" data-aos="zoom-in" data-aos-delay="300">
-            <div className="flex items-center gap-3 mb-6 md:mb-8">
-              <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-amber-400 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-                <Users className="size-6 md:size-7 text-white" />
-              </div>
-              <div>
-                <h3 className="text-blue-950 text-xl md:text-2xl">Register for Free</h3>
-                <p className="text-blue-900/60 text-sm md:text-base">No payment required • All are welcome</p>
-              </div>
-            </div>
-            
-            <form className="space-y-5 md:space-y-6">
-              <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-                <div>
-                  <label className="block text-blue-950 mb-2 text-sm md:text-base">First Name *</label>
-                  <Input
-                    name="firstName"
-                    placeholder="John"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    required
-                    className="h-11 md:h-12 border-blue-200 focus:border-amber-400 rounded-xl text-base"
-                  />
-                </div>
-                <div>
-                  <label className="block text-blue-950 mb-2 text-sm md:text-base">Last Name *</label>
-                  <Input
-                    name="lastName"
-                    placeholder="Doe"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    required
-                    className="h-11 md:h-12 border-blue-200 focus:border-amber-400 rounded-xl text-base"
-                  />
-                </div>
+          {/* Registration Card */}
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-blue-100" data-aos="zoom-in" data-aos-delay="300">
+            <div className="text-center">
+              <div className="inline-flex w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-amber-400 to-amber-500 rounded-3xl items-center justify-center mb-6 md:mb-8 shadow-2xl">
+                <Users className="size-8 md:size-10 text-white" />
               </div>
               
-              <div>
-                <label className="block text-blue-950 mb-2 text-sm md:text-base">Email Address *</label>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="john@example.com"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="h-11 md:h-12 border-blue-200 focus:border-amber-400 rounded-xl text-base"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-blue-950 mb-2 text-sm md:text-base">Phone Number *</label>
-                <Input
-                  type="tel"
-                  name="phone"
-                  placeholder="+234 800 000 0000"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  className="h-11 md:h-12 border-blue-200 focus:border-amber-400 rounded-xl text-base"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-blue-950 mb-2 text-sm md:text-base">Church / Ministry (Optional)</label>
-                <Input
-                  name="church"
-                  placeholder="Your church name"
-                  value={formData.church}
-                  onChange={handleInputChange}
-                  className="h-11 md:h-12 border-blue-200 focus:border-amber-400 rounded-xl text-base"
-                />
-              </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full h-12 md:h-14 bg-gradient-to-r from-amber-500 to-amber-600 text-white hover:from-amber-600 hover:to-amber-700 shadow-xl rounded-xl text-base md:text-lg"
-              >
-                Complete Registration - Free
-              </Button>
-
-              <p className="text-blue-900/60 text-xs md:text-sm text-center">
-                You'll receive confirmation and livestream details via email
+              <h3 className="text-blue-950 text-2xl md:text-3xl mb-3 md:mb-4">Register for Free</h3>
+              <p className="text-blue-900/70 text-base md:text-lg mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed">
+                Click the button below to complete your registration. You'll be redirected to our secure registration platform.
               </p>
-            </form>
+              
+              <button
+                onClick={handleRegistrationClick}
+                className="inline-flex items-center gap-3 px-10 md:px-12 py-5 md:py-6 bg-gradient-to-r from-amber-500 to-amber-600 text-white hover:from-amber-600 hover:to-amber-700 transition-all rounded-full shadow-2xl text-base md:text-lg group transform hover:scale-105"
+              >
+                <span>Complete Registration</span>
+                <ExternalLink className="size-5 md:size-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </button>
+
+              <p className="text-blue-900/60 text-xs md:text-sm mt-6 md:mt-8">
+                ✓ No payment required • ✓ Free entry • ✓ All are welcome
+              </p>
+              
+              {EXTERNAL_REGISTRATION_URL === 'YOUR_REGISTRATION_LINK_HERE' && (
+                <div className="mt-8 p-4 bg-amber-50 border-2 border-amber-200 rounded-xl">
+                  <p className="text-amber-800 text-sm">
+                    ⚠️ <strong>Developer Note:</strong> Update <code className="bg-amber-100 px-2 py-1 rounded">EXTERNAL_REGISTRATION_URL</code> in <code className="bg-amber-100 px-2 py-1 rounded">Registration.tsx</code>
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Benefits */}
